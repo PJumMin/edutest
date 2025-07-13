@@ -35,8 +35,7 @@ public class ApplicationRepository {
     }
 
     public Boolean existsByEmployeeIdAndCourseId(Long employeeId, Long courseId) {
-        String ql = "select count(a) from Application a where a.employee.id = :employeeId and a.course.id = :courseId";
-        Long count = em.createQuery(ql, Long.class)
+        Long count = em.createQuery("select count(a) from Application a where a.employee.id = :employeeId and a.course.id = :courseId", Long.class)
                 .setParameter("employeeId", employeeId)
                 .setParameter("courseId", courseId)
                 .getSingleResult();

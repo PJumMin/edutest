@@ -25,12 +25,12 @@ public class CourseRepository {
     }
 
 
-    public Optional<Course> findBytitle(String title) {
+    public Optional<Course> findByTitle(String title) {
         try {
-            Course CoursePS = em.createQuery("select c from Course c where c.title = :title", Course.class)
+            Course course = em.createQuery("select c from Course c where c.title = :title", Course.class)
                     .setParameter("title", title)
                     .getSingleResult();
-            return Optional.of(CoursePS);
+            return Optional.of(course);
         } catch (Exception e) {
             return Optional.ofNullable(null);
         }

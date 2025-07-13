@@ -23,10 +23,10 @@ public class ApplicationService {
     @Transactional
     public ApplicationResponse.SaveDTO save(ApplicationRequest.SaveDTO reqDTO) {
         Employee employeePS = employeeRepository.findById(reqDTO.getEmployeeId())
-                .orElseThrow(() -> new RuntimeException("직원을 찾을 수 없습니다"));
+                .orElseThrow(() -> new RuntimeException("해당 직원을 찾을 수 없습니다."));
 
         Course coursePS = courseRepository.findById(reqDTO.getCourseId())
-                .orElseThrow(() -> new RuntimeException("코스를 찾을 수 없습니다"));
+                .orElseThrow(() -> new RuntimeException("해당 강좌를 찾을 수 없습니다."));
 
         if (applicationRepository.existsByEmployeeIdAndCourseId(employeePS.getId(), coursePS.getId())) {
             throw new ExceptionApi400("이미 신청한 과목입니다.");
@@ -34,6 +34,8 @@ public class ApplicationService {
 
         Application savePS = applicationRepository.save(reqDTO.toEntity(employeePS, coursePS));
 
-        return new ApplicationResponse.SaveDTO(savePS.getEmployee().getId(), savePS.getCourse().getId());
+        return new ApplicationResponse.SaveDTO(
+                savePS.getEmployee().getId(),
+                savePS.getCourse().getId());
     }
 }

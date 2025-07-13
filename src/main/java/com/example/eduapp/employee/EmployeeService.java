@@ -34,13 +34,13 @@ public class EmployeeService {
     }
 
     public List<EmployeeResponse.EmployeeApplicantDTO> getApplicants(Long id) {
-        List<Application> employeeList = applicationRepository.findByEmployeeId(id);
-        List<EmployeeResponse.EmployeeApplicantDTO> applicationList = new ArrayList<>();
-        for (Application employees : employeeList) {
-            applicationList.add(new EmployeeResponse.EmployeeApplicantDTO(employees));
+        List<Application> applicationList = applicationRepository.findByEmployeeId(id);
+        List<EmployeeResponse.EmployeeApplicantDTO> responseList = new ArrayList<>();
+        for (Application application : applicationList) {
+            responseList.add(new EmployeeResponse.EmployeeApplicantDTO(application));
         }
 
-        return applicationList;
+        return responseList;
     }
 
 }

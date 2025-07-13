@@ -23,7 +23,7 @@ public class CourseService {
 
     @Transactional
     public CourseResponse.SaveDTO save(CourseRequest.SaveDTO reqDTO) {
-        Optional<Course> courseOptional = courseRepository.findBytitle(reqDTO.getTitle());
+        Optional<Course> courseOptional = courseRepository.findByTitle(reqDTO.getTitle());
 
         if (courseOptional.isPresent()) {
             throw new ExceptionApi400("이미 있는 과목입니다.");
@@ -34,12 +34,12 @@ public class CourseService {
     }
 
     public List<CourseResponse.CourseApplicantDTO> getApplicants(Long id) {
-        List<Application> courseList = applicationRepository.findByCourseId(id);
-        List<CourseResponse.CourseApplicantDTO> applicationList = new ArrayList<>();
-        for (Application applications : courseList) {
-            applicationList.add(new CourseResponse.CourseApplicantDTO(applications));
+        List<Application> applicationList = applicationRepository.findByCourseId(id);
+        List<CourseResponse.CourseApplicantDTO> responseList = new ArrayList<>();
+        for (Application application : applicationList) {
+            responseList.add(new CourseResponse.CourseApplicantDTO(application));
         }
 
-        return applicationList;
+        return responseList;
     }
 }

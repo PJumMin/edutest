@@ -25,10 +25,10 @@ public class EmployeeRepository {
 
     public Optional<Employee> findByEmail(String email) {
         try {
-            Employee employeePS = em.createQuery("select e from Employee e where e.email = :email", Employee.class)
+            Employee employee = em.createQuery("select e from Employee e where e.email = :email", Employee.class)
                     .setParameter("email", email)
                     .getSingleResult();
-            return Optional.of(employeePS);
+            return Optional.of(employee);
         } catch (Exception e) {
             return Optional.ofNullable(null);
         }

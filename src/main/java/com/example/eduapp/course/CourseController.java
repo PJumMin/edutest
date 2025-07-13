@@ -24,7 +24,7 @@ public class CourseController {
 
     @GetMapping("/courses/{id}/applicants")
     private ResponseEntity<?> getApplicants(@PathVariable Long id) {
-        List<CourseResponse.CourseApplicantDTO> resqDTO = courseService.getApplicants(id);
-        return Resp.ok(resqDTO);
+        List<CourseResponse.CourseApplicantDTO> respDTO = courseService.getApplicants(id);
+        return Resp.ok(respDTO);
     }
 }
