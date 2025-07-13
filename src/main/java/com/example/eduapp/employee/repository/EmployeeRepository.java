@@ -1,6 +1,6 @@
-package com.example.eduapp.repository;
+package com.example.eduapp.employee.repository;
 
-import com.example.eduapp.domain.Employee;
+import com.example.eduapp.employee.domain.Employee;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

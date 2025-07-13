@@ -1,9 +1,9 @@
-package com.example.eduapp;
+package com.example.eduapp.employee;
 
-import com.example.eduapp.domain.Employee;
-import com.example.eduapp.dto.EmployeeRequest;
-import com.example.eduapp.dto.EmployeeResponse;
-import com.example.eduapp.repository.EmployeeRepository;
+import com.example.eduapp.employee.domain.Employee;
+import com.example.eduapp.employee.dto.EmployeeRequest;
+import com.example.eduapp.employee.dto.EmployeeResponse;
+import com.example.eduapp.employee.repository.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,6 +1,6 @@
-package com.example.eduapp.dto;
+package com.example.eduapp.employee.dto;
 
-import com.example.eduapp.domain.Employee;
+import com.example.eduapp.employee.domain.Employee;
 import lombok.Data;
 
 public class EmployeeRequest {

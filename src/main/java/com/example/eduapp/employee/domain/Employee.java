@@ -1,4 +1,4 @@
-package com.example.eduapp.domain;
+package com.example.eduapp.employee.domain;
 
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -10,7 +10,7 @@ import lombok.Getter;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String name;
     private String description;
 
@@ -22,7 +22,7 @@ public class Employee {
     }
 
     @Builder
-    public Employee(Integer id, String name, String description, String email) {
+    public Employee(Long id, String name, String description, String email) {
         this.id = id;
         this.name = name;
         this.description = description;

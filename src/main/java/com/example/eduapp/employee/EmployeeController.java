@@ -1,8 +1,8 @@
-package com.example.eduapp;
+package com.example.eduapp.employee;
 
 import com.example.eduapp._core.utils.Resp;
-import com.example.eduapp.dto.EmployeeRequest;
-import com.example.eduapp.dto.EmployeeResponse;
+import com.example.eduapp.employee.dto.EmployeeRequest;
+import com.example.eduapp.employee.dto.EmployeeResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

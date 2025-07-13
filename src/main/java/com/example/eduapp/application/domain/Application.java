@@ -1,4 +1,4 @@
-package com.example.eduapp.domain;
+package com.example.eduapp.application.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -10,7 +10,5 @@ public class Application {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String name;
-    private String description;
-    private String email;
+
 }
