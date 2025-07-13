@@ -10,10 +10,10 @@ import com.example.eduapp.course.repository.CourseRepository;
 import com.example.eduapp.employee.domain.Employee;
 import com.example.eduapp.employee.repository.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Repository
+@Service
 @RequiredArgsConstructor
 public class ApplicationService {
     private final ApplicationRepository applicationRepository;

@@ -8,14 +8,14 @@ import com.example.eduapp.employee.dto.EmployeeRequest;
 import com.example.eduapp.employee.dto.EmployeeResponse;
 import com.example.eduapp.employee.repository.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+@Service
 @RequiredArgsConstructor
 public class EmployeeService {
     private final EmployeeRepository employeeRepository;

@@ -8,14 +8,14 @@ import com.example.eduapp.course.dto.CourseRequest;
 import com.example.eduapp.course.dto.CourseResponse;
 import com.example.eduapp.course.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+@Service
 @RequiredArgsConstructor
 public class CourseService {
     private final CourseRepository courseRepository;
