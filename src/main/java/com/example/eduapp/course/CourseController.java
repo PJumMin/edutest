@@ -5,9 +5,9 @@ import com.example.eduapp.course.dto.CourseRequest;
 import com.example.eduapp.course.dto.CourseResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,5 +18,11 @@ public class CourseController {
     public ResponseEntity<?> save(@RequestBody CourseRequest.SaveDTO reqDTO) {
         CourseResponse.SaveDTO respDTO = courseService.save(reqDTO);
         return Resp.ok(respDTO);
+    }
+
+    @GetMapping("/courses/{id}/applicants")
+    private ResponseEntity<?> getApplicants(@PathVariable int id) {
+        List<CourseResponse.CourseApplicantDTO> resqDTO = courseService.getApplicants(id);
+        return Resp.ok(resqDTO);
     }
 }
