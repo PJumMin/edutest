@@ -5,9 +5,9 @@ import com.example.eduapp.employee.dto.EmployeeRequest;
 import com.example.eduapp.employee.dto.EmployeeResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,5 +18,12 @@ public class EmployeeController {
     public ResponseEntity<?> save(@RequestBody EmployeeRequest.SaveDTO reqDTO) {
         EmployeeResponse.SaveDTO respDTO = employeeService.save(reqDTO);
         return Resp.ok(respDTO);
+    }
+
+    @GetMapping("/employees/{id}/applications")
+    public ResponseEntity<?> getApplicants(@PathVariable int id) {
+        List<EmployeeResponse.EmployeeApplicantDTO> respDTO = employeeService.getApplicants(id);
+        return Resp.ok(respDTO);
+
     }
 }

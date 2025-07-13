@@ -20,9 +20,16 @@ public class ApplicationRepository {
         return application;
     }
 
-    public List<Application> findByCourseId(int userId) {
-        Query query = em.createQuery("select a from Application a join fetch a.course join fetch a.employee where a.course.id = :userId", Application.class);
-        query.setParameter("userId", userId);
+    public List<Application> findByCourseId(int courseId) {
+        Query query = em.createQuery("select a from Application a join fetch a.course join fetch a.employee where a.course.id = :courseId", Application.class);
+        query.setParameter("courseId", courseId);
+        List<Application> courseList = query.getResultList();
+        return courseList;
+    }
+
+    public List<Application> findByEmployeeId(int employeeId) {
+        Query query = em.createQuery("select a from Application a join fetch a.course join fetch a.employee where a.employee.id = :employeeId", Application.class);
+        query.setParameter("employeeId", employeeId);
         List<Application> courseList = query.getResultList();
         return courseList;
     }
