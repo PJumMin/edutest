@@ -22,4 +22,15 @@ public class EmployeeRepository {
         Employee employeePS = em.find(Employee.class, employeeId);
         return Optional.ofNullable(employeePS);
     }
+
+    public Optional<Employee> findByEmail(String email) {
+        try {
+            Employee employeePS = em.createQuery("select e from Employee e where e.email = :email", Employee.class)
+                    .setParameter("email", email)
+                    .getSingleResult();
+            return Optional.of(employeePS);
+        } catch (Exception e) {
+            return Optional.ofNullable(null);
+        }
+    }
 }

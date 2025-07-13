@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class Application {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id")
@@ -29,7 +29,7 @@ public class Application {
     private LocalDateTime appliedAt;
 
     @Builder
-    public Application(Integer id, Employee employee, Course course, LocalDateTime appliedAt) {
+    public Application(Long id, Employee employee, Course course, LocalDateTime appliedAt) {
         this.id = id;
         this.employee = employee;
         this.course = course;

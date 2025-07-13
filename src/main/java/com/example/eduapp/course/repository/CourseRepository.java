@@ -25,4 +25,14 @@ public class CourseRepository {
     }
 
 
+    public Optional<Course> findBytitle(String title) {
+        try {
+            Course CoursePS = em.createQuery("select c from Course c where c.title = :title", Course.class)
+                    .setParameter("title", title)
+                    .getSingleResult();
+            return Optional.of(CoursePS);
+        } catch (Exception e) {
+            return Optional.ofNullable(null);
+        }
+    }
 }

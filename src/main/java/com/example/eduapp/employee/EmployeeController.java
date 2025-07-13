@@ -23,7 +23,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/employees/{id}/applications")
-    public ResponseEntity<?> getApplicants(@PathVariable int id) {
+    public ResponseEntity<?> getApplicants(@PathVariable Long id) {
         List<EmployeeResponse.EmployeeApplicantDTO> respDTO = employeeService.getApplicants(id);
         return Resp.ok(respDTO);
 

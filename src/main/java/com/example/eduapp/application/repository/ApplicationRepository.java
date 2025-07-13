@@ -20,17 +20,27 @@ public class ApplicationRepository {
         return application;
     }
 
-    public List<Application> findByCourseId(int courseId) {
+    public List<Application> findByCourseId(Long courseId) {
         Query query = em.createQuery("select a from Application a join fetch a.course join fetch a.employee where a.course.id = :courseId", Application.class);
         query.setParameter("courseId", courseId);
         List<Application> courseList = query.getResultList();
         return courseList;
     }
 
-    public List<Application> findByEmployeeId(int employeeId) {
+    public List<Application> findByEmployeeId(Long employeeId) {
         Query query = em.createQuery("select a from Application a join fetch a.course join fetch a.employee where a.employee.id = :employeeId", Application.class);
         query.setParameter("employeeId", employeeId);
         List<Application> courseList = query.getResultList();
         return courseList;
     }
+
+    public Boolean existsByEmployeeIdAndCourseId(Long employeeId, Long courseId) {
+        String ql = "select count(a) from Application a where a.employee.id = :employeeId and a.course.id = :courseId";
+        Long count = em.createQuery(ql, Long.class)
+                .setParameter("employeeId", employeeId)
+                .setParameter("courseId", courseId)
+                .getSingleResult();
+        return count > 0;
+    }
+
 }

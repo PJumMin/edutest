@@ -1,5 +1,6 @@
 package com.example.eduapp.application;
 
+import com.example.eduapp._core.error.ex.ExceptionApi400;
 import com.example.eduapp.application.domain.Application;
 import com.example.eduapp.application.dto.ApplicationRequest;
 import com.example.eduapp.application.dto.ApplicationResponse;
@@ -24,10 +25,14 @@ public class ApplicationService {
         Employee employeePS = employeeRepository.findById(reqDTO.getEmployeeId())
                 .orElseThrow(() -> new RuntimeException("직원을 찾을 수 없습니다"));
 
-        Course CoursePS = courseRepository.findById(reqDTO.getCourseId())
+        Course coursePS = courseRepository.findById(reqDTO.getCourseId())
                 .orElseThrow(() -> new RuntimeException("코스를 찾을 수 없습니다"));
 
-        Application savePS = applicationRepository.save(reqDTO.toEntity(employeePS, CoursePS));
+        if (applicationRepository.existsByEmployeeIdAndCourseId(employeePS.getId(), coursePS.getId())) {
+            throw new ExceptionApi400("이미 신청한 과목입니다.");
+        }
+
+        Application savePS = applicationRepository.save(reqDTO.toEntity(employeePS, coursePS));
 
         return new ApplicationResponse.SaveDTO(savePS.getEmployee().getId(), savePS.getCourse().getId());
     }
