@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ApplicationController {
     private final ApplicationService applicationService;
 
+    // MTCD: valid 체크 필요
     @PostMapping("/applications")
     public ResponseEntity<?> save(@RequestBody ApplicationRequest.SaveDTO reqDTO) {
         ApplicationResponse.SaveDTO resqDTO = applicationService.save(reqDTO);
