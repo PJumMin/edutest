@@ -26,7 +26,7 @@ public class CourseService {
         Optional<Course> courseOptional = courseRepository.findByTitle(reqDTO.getTitle());
 
         if (courseOptional.isPresent()) {
-            throw new ExceptionApi400("이미 있는 과목입니다.");
+            throw new ExceptionApi400("이미 있는 교육입니다.");
         }
 
         Course savePS = courseRepository.save(reqDTO.toEntity());
